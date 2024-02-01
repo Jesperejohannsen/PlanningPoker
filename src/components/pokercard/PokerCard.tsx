@@ -3,18 +3,20 @@ import './PokerCard.css';
 
 interface PokerCardProps {
   value: string;
-  onSelect: (value: string) => void;
-  isSelected: boolean;
+  onSelect: () => void;
+  isRevealed: boolean;
 }
 
-const PokerCard: React.FC<PokerCardProps> = ({ value, onSelect, isSelected }) => {
+const PokerCard: React.FC<PokerCardProps> = ({ value, onSelect, isRevealed }) => {
   return (
-    <div
-      className={`poker-card ${isSelected ? 'selected' : ''}`}
-      onClick={() => onSelect(value)}
-    >
-      {value}
+    <div className="poker-cards-container">
+    <div className={`poker-card ${isRevealed ? 'revealed' : ''}`} onClick={onSelect}>
+      <div className="poker-card-inner">
+        <div className="poker-card-front">?</div>
+        <div className="poker-card-back">{value}</div>
+      </div>
     </div>
+  </div>
   );
 };
 

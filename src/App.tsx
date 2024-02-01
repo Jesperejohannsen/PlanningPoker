@@ -1,4 +1,3 @@
-// src/App.tsx
 import React, { useState } from 'react';
 import './App.css';
 import PokerCard from './components/pokercard/PokerCard';
@@ -7,11 +6,15 @@ const cardValues = ['0', '1', '2', '3', '5', '8', '13', '21', '?'];
 
 const App: React.FC = () => {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
-  const [reveal, setReveal] = useState<boolean>(false); // Add state to manage reveal
+  const [isRevealed, setIsRevealed] = useState<boolean>(false);
 
   const handleSelectCard = (value: string) => {
     setSelectedCard(value);
-    if (reveal) setReveal(false); // Reset reveal state if a new card is selected
+    setIsRevealed(false); // Reset reveal state when a new card is selected
+  };
+
+  const handleReveal = () => {
+    setIsRevealed(true);
   };
 
   return (
@@ -21,12 +24,12 @@ const App: React.FC = () => {
           <PokerCard
             key={value}
             value={value}
-            onSelect={handleSelectCard}
-            isSelected={selectedCard === value && reveal} // Only show as selected if revealed
+            onSelect={() => handleSelectCard(value)}
+            isRevealed={isRevealed && selectedCard === value}
           />
         ))}
       </div>
-      <button className="reveal-button" onClick={() => setReveal(true)}>Reveal Cards</button>
+      <button onClick={handleReveal} className="reveal-button">Reveal Card</button>
     </div>
   );
 };

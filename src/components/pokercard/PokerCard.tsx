@@ -9,14 +9,12 @@ interface PokerCardProps {
 
 const PokerCard: React.FC<PokerCardProps> = ({ value, onSelect, isRevealed }) => {
   return (
-    <div className="poker-cards-container">
     <div className={`poker-card ${isRevealed ? 'revealed' : ''}`} onClick={onSelect}>
       <div className="poker-card-inner">
         <div className="poker-card-front">?</div>
         <div className="poker-card-back">{value}</div>
       </div>
     </div>
-  </div>
   );
 };
 

@@ -1,11 +1,13 @@
 .poker-cards-container {
   display: flex;
-  justify-content: center; 
+  flex-wrap: nowrap; 
+  justify-content: flex-start; 
   align-items: center; 
   gap: 20px; 
 }
+
 .poker-card {
-  perspective: 1000px;
+  flex: 0 0 auto; 
 }
 
 .poker-card-inner {

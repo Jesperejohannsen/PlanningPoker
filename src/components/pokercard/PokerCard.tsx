@@ -1,5 +1,6 @@
+// src/components/pokercard/PokerCard.tsx
 import React from 'react';
-import './PokerCard.css'; 
+import './PokerCard.css';
 
 interface PokerCardProps {
   value: string;

@@ -1,4 +1,3 @@
-// src/components/pokercard/PokerCard.tsx
 import React from 'react';
 import './PokerCard.css';
 

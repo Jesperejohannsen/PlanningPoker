@@ -1,37 +1,14 @@
-import React, { useState } from "react";
-import "./App.css";
-import PokerCard from "./components/pokercard/PokerCard";
+import React from 'react';
+import './App.css';
+import PokerCardsContainer from './components/pokercard/PokerCardsContainer';
 
-const cardValues = ["0", "1", "2", "3", "5", "8", "13", "21", "?"];
+const cardValues = ['0', '1', '2', '3', '5', '8', '13', '21', '?'];
 
 const App: React.FC = () => {
-  const [selectedCard, setSelectedCard] = useState<string | null>(null);
-  const [isRevealed, setIsRevealed] = useState<boolean>(false);
-
-  const handleSelectCard = (value: string) => {
-    setSelectedCard(value);
-    setIsRevealed(false); // Reset reveal state when a new card is selected
-  };
-
-  const handleReveal = () => {
-    setIsRevealed(true);
-  };
-
   return (
-    <>
-      {cardValues.map((value) => (
-        <PokerCard
-          key={value}
-          value={value}
-          onSelect={() => handleSelectCard(value)}
-          isRevealed={isRevealed && selectedCard === value}
-        />
-      ))}
-
-      <button onClick={handleReveal} className="reveal-button">
-        Reveal Card
-      </button>
-    </>
+    <div className="App">
+      <PokerCardsContainer cardValues={cardValues} />
+    </div>
   );
 };
 
